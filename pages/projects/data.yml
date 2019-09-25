@@ -1,0 +1,18 @@
+---
+projects:
+    - title: rust-postgres-query
+      description: Statically typed SQL queries with readable parameter names.
+      links:
+          github: https://github.com/nolanderc/rust-postgres-query
+
+    - title: Realtime Voxel Raytracing
+      description: Display raytraced voxel environments in realtime.
+      image: https://raw.githubusercontent.com/nolanderc/voxel-raytracer/master/gallery/screenshot3.png
+      links:
+          github: https://github.com/nolanderc/voxel-raytracer
+
+    - title: Matjakt
+      description: Search for the cheapest foodstuffs in stores all around Sweden.
+      links:
+          website: https://matjakt.nolander.xyz
+

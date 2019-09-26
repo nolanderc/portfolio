@@ -11,13 +11,14 @@ projects:
            <li>a fast search algorithm that corrects for spelling errors</li>
            <li>high performance asynchronous servers</li>
            <li>efficient image recognition algorithms</li>
-           <li>and much more...</li>"
+           <li>and much more...</li></ul>"
       image: gallery/matjakt.png
       links:
           website: https://matjakt.nolander.xyz
       technologies:
           - Rust
           - Web
+          - PostgreSQL
 
     - title: Real-Time Voxel Ray Tracing
       description: 
@@ -33,13 +34,13 @@ projects:
           github: https://github.com/nolanderc/voxel-raytracer
       technologies:
           - C++
-          - Graphics
           - OpenCL
+          - OpenGL
 
     - title: rust-postgres-query
       description: 
         - Statically typed SQL queries with readable parameter names.  
-        - A Rust library where the user defines named parameters and names
+        - An open source Rust library where the user defines named parameters and names
           which are encoded into an SQL-query at compile-time.
       image:
           gallery/postgresql-query.png

@@ -41,7 +41,8 @@ fn start_server(options: &'static Options) -> Result<()> {
     if options.watch {
         let dirs = [&options.pages_directory, &options.templates_directory];
         let handler = reload_pages(options, pages.clone());
-        watch_directories(&dirs, handler)?;
+        let delay = Duration::from_secs_f32(options.delay);
+        watch_directories(&dirs, delay, handler)?;
     }
 
     let app = move || {
@@ -65,6 +66,7 @@ fn not_found(req: HttpRequest) -> String {
 
 fn watch_directories(
     directories: impl IntoIterator<Item = impl AsRef<Path>>,
+    delay: Duration,
     mut f: impl FnMut() -> bool + Send + Sync + 'static,
 ) -> Result<()> {
     let (tx, events) = mpsc::channel();
@@ -80,7 +82,7 @@ fn watch_directories(
 
         while let Ok(_) = events.recv() {
             while events.try_recv().is_ok() {
-                thread::sleep(Duration::from_secs(1));
+                thread::sleep(delay);
             }
 
             if !f() {

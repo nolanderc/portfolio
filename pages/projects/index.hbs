@@ -1,48 +1,54 @@
+{{#*inline "metadata"}}
+    <title>Projects</title>
+{{/inline}}
 
-<html>
-    <head>
-        <style>
-            .project {
-                border: 1px solid #ddd;
-                border-radius: 5px;
-                margin: 1em;
-                padding: 1em;
-                width: 100%;
-                max-width: 20em;
-                margin-left: auto;
-                margin-right: auto;
-            }
+{{#*inline "content"}}
+    {{>sidebar}}
 
-            .project > *:first-child {
-                margin-top: 0;
-            }
-
-            .project > *:last-child {
-                margin-bottom: 0;
-            }
-        </style>
-    </head>
-    <body>
+    <div id="projects">
         <h1>Projects</h1>
+
+        Some of my favourite projects to have worked on.
+
         {{#each data.projects}}
+            <hr>
+            <span></span>
             <div class="project">
-                <h3 style="display:inline;">{{title}}</h3>
+                <div class="project-content">
+                    <h2>{{title}}</h2>
 
-                {{#if links.github}}
-                    <a href="{{links.github}}">
-                        <img src="GitHub-Light.svg" style="width:1em;" />
-                    </a>
+                    {{#each description}}
+                        <p>{{{this}}}</p>
+                    {{/each}}
+
+                    <h3>Links</h3>
+
+                    {{#if links.github}}
+                        <a href="{{links.github}}" class="fat-link">See on GitHub</a>
+                    {{/if}}
+
+                    {{#if links.website}}
+                        <a href="{{links.website}}" class="fat-link">Visit Website</a>
+                    {{/if}}
+
+                    {{#if technologies}}
+                        <h3>Technologies</h3>
+                        <div class="tag-list">
+                            {{#each technologies}}
+                                <div class="tag">{{this}}</div>
+                            {{/each}}
+                        </div>
+                    {{/if}}
+                </div>
+
+                {{#if image}}
+                    <div class="project-image">
+                        <img src="{{image}}" style="float:left" />
+                    </div>
                 {{/if}}
-
-                {{#if links.website}}
-                    <a href="{{links.website}}">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Globe_icon.svg/1024px-Globe_icon.svg.png" style="width:1em;" />
-                    </a>
-                {{/if}}
-
-                <p>{{description}}</p>
             </div>
         {{/each}}
-    </body>
-</html>
+    </div>
+{{/inline}}
 
+{{>base}}

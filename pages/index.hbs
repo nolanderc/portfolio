@@ -1,9 +1,14 @@
+{{#*inline "metadata"}}
+    <title>Christofer Nolander</title>
+{{/inline}}
 
-<html>
-    <head></head>
-    <body>
-        <h1>Welcome</h1>
+{{#*inline "content"}}
+    {{>sidebar}}
+
+    <div>
+        <h1>Welcome to my website</h1>
         <a href="/projects/">Projects</a>
-    </body>
-</html>
+    </div>
+{{/inline}}
 
+{{>base}}

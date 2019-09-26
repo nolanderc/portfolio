@@ -1,0 +1,190 @@
+
+body {
+    font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+    background-color: #ecf0f1;
+}
+
+/*
+ * Sidebar layout
+ */
+
+body {
+    margin: 0;
+    margin-left: 20em;
+}
+
+#sidebar {
+    width: 20em;
+    height: 100%;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    overflow: hidden;
+
+    background-color: #34495e;
+}
+
+@media only screen and (max-width: 700px) {
+    body {
+        margin: 0;
+    }
+
+    #sidebar {
+        width: 100%;
+        height: auto;
+
+        position: relative;
+    }
+}
+
+
+/*
+ * Sidebar content
+ */
+
+#profile {
+    padding: 1em;
+    color: #ecf0f1;
+    text-transform: uppercase;
+}
+
+#profile-picture {
+    width: 10em;
+    height: 10em;
+    border-radius: 100%;
+
+    margin: 1em auto;
+
+    background-color: #888;
+    overflow: hidden;
+}
+
+#profile-picture img {
+    width: 100%;
+}
+
+
+#profile-name {
+    width: 100%;
+    margin: auto;
+    margin-bottom: 0.5em;
+
+    text-align: center;
+    font-size: 1.3em;
+    font-weight: 700;
+}
+
+#profile-desc {
+    margin: auto;
+    margin-bottom: 1.5em;
+
+    text-align: center;
+    text-transform: uppercase;
+}
+
+#profile-links {
+    margin-bottom: 2em;
+}
+
+#profile-contact h2 {
+
+}
+
+
+/*
+ * Projects
+ */
+
+#projects {
+    max-width: 60em;
+    margin: auto;
+    padding: 2em;
+}
+
+#projects hr {
+    border: 1px solid #bdc3c7;
+    opacity: 0.4;
+}
+
+.project {
+    display: flex;
+    flex-wrap: wrap-reverse;
+}
+
+.project p, .project a {
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+.project-image {
+    margin: 1em;
+}
+
+.project-image img {
+    border-radius: 5px;
+    box-shadow: 0 0 10px #aaa;
+    max-width: 100%;
+    min-width: 20em;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.project-content {
+    padding: 1em;
+    min-width: 20em;
+}
+
+.project-content > *:first-child {
+    margin-top: 0;
+}
+.project-content > *:last-child {
+    margin-bottom: 0;
+}
+
+.project > *:nth-child(1) {
+    flex: 3 3;
+}
+.project > *:nth-child(2) {
+    flex: 2 2;
+}
+
+.project:nth-child(odd) > *:nth-child(1) {
+    order: 1;
+}
+.project:nth-child(odd) > *:nth-child(2) {
+}
+
+
+
+.fat-link {
+    width: auto;
+    display: inline-block;
+    padding: 0.5em;
+    background-color: #2980b9;
+    text-decoration: none;
+    color: #ecf0f1;
+    border-radius: 3px;
+    transition: background-color 0.08s;
+}
+
+.fat-link:hover {
+    background-color: #3498db;
+}
+
+
+.tag-list {
+    margin-left: 1em;
+}
+
+.tag {
+    display: inline-block;
+    padding: 0.5em;
+    background-color: #2980b9;
+    color: #ecf0f1;
+    border-radius: 3px;
+}
+
+

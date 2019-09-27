@@ -28,4 +28,3 @@ pub struct Options {
     #[structopt(long, default_value = "1")]
     pub delay: f32,
 }
-

@@ -12,11 +12,11 @@ use actix_files::Files;
 use actix_web::{web, App, HttpRequest, HttpServer};
 use arc_swap::ArcSwap;
 use notify::{raw_watcher, RecursiveMode, Watcher};
+use std::path::Path;
 use std::sync::{mpsc, Arc};
 use std::thread;
 use std::time::Duration;
 use structopt::StructOpt;
-use std::path::Path;
 
 pub type SwapData<T> = web::Data<ArcSwap<T>>;
 
@@ -86,7 +86,7 @@ fn watch_directories(
             }
 
             if !f() {
-                break
+                break;
             }
         }
 

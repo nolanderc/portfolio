@@ -30,7 +30,7 @@ pub fn config(_options: &Options, pages: SwapData<Pages>) -> impl FnOnce(&mut we
 fn display_page(page: Extension<Arc<Page>>, pages: SwapData<Pages>) -> Result<HttpResponse> {
     let templates = &pages.load_full().templates;
 
-    let data = PageTemplate { data: page.data() };
+    let data = PageTemplate { data: page.data(), path: &page.breadcrumb.url() };
 
     let rendered = templates.render(&page.template_name(), &data)?;
 
@@ -59,6 +59,7 @@ struct PageIndexData {
 #[derive(Debug, Serialize)]
 struct PageTemplate<'a> {
     data: &'a serde_yaml::Value,
+    path: &'a str,
 }
 
 #[derive(Debug, Clone)]

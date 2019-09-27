@@ -1,29 +1,44 @@
 
+{{#*inline "project-link"}}
+    <a href="{{href}}" class="profile-link {{#if (eq href path)}}current{{/if}}">{{text}}</a>
+{{/inline}}
+
 <div id="sidebar">
     <div id="profile">
-        <div id="profile-picture">
-            <img src="https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fthumbs.dreamstime.com%2Fb%2Fprofile-icon-male-avatar-portrait-casual-person-silhouette-face-flat-design-vector-47075235.jpg&f=1&nofb=1">
-        </div>
+        <a href="/" id="profile-area">
+            <div id="profile-picture">
+                <img src="https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fthumbs.dreamstime.com%2Fb%2Fprofile-icon-male-avatar-portrait-casual-person-silhouette-face-flat-design-vector-47075235.jpg&f=1&nofb=1">
+            </div>
 
-        <div id="profile-name">
-            Christofer Nolander
-        </div>
+            <div id="profile-name">
+                Christofer Nolander
+            </div>
 
-        <div id="profile-desc">
-            Programming aficionado
-        </div>
+            <div id="profile-desc">
+                Programming aficionado
+            </div>
+        </a>
 
-        <div id="profile-links">
-            <a href="/projects/" class="profile-link">Projects</a>
+        <div class="profile-links">
+            {{>project-link href="/" text="Home"}}
+            {{>project-link href="/projects/" text="Projects"}}
+            {{>project-link href="/contact/" text="Contact"}}
         </div>
 
         <div id="profile-contact">
-            Socials
+            <div class="header-small">Get in touch</div>
 
-            <br>
-            <a href="mailto:christofer.nolander@gmail.com">Mail</a>
-            <a href="https://github.com/nolanderc">GitHub</a>
-            <a href="https://www.linkedin.com/in/nolander/">LinkedIn</a>
+            <div>
+                <a href="mailto:christofer.nolander@gmail.com">
+                    <i class="fas fa-envelope-square"></i>
+                </a>
+                <a href="https://github.com/nolanderc">
+                    <i class="fab fa-github-square"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/nolander/">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+            </div>
         </div>
     </div>
 </div>

@@ -26,8 +26,8 @@ projects:
         - Complex voxel environments can be dynamically loaded onto a GPU and
           be ray-traced in real-time thanks to an efficient Octree traversal
           algorithm of my design.
-        - There's currently support for voxels of differing colors, shadows and
-          more!
+        - There's currently support for voxels of different
+          colors, camera movement and shadows!
       image: 
           gallery/voxel-ray-trace.png
       links:
@@ -40,7 +40,7 @@ projects:
     - title: rust-postgres-query
       description: 
         - Statically typed SQL queries with readable parameter names.  
-        - An open source Rust library where the user defines named parameters and names
+        - An open source Rust library where the user defines named parameters
           which are encoded into an SQL-query at compile-time.
       image:
           gallery/postgresql-query.png

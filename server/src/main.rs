@@ -17,6 +17,7 @@ use std::sync::{mpsc, Arc};
 use std::thread;
 use std::time::Duration;
 use structopt::StructOpt;
+use std::process;
 
 pub type SwapData<T> = web::Data<ArcSwap<T>>;
 
@@ -27,7 +28,10 @@ fn main() {
     let options = Box::leak(options);
 
     match start_server(options) {
-        Err(e) => log::error!("Fatal: {}", e),
+        Err(e) => {
+            log::error!("Fatal: {}", e);
+            process::exit(1);
+        } ,
         Ok(()) => (),
     }
 }

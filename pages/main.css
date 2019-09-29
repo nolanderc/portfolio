@@ -145,17 +145,20 @@ body {
     color: #ecf0f1;
 }
 
-
-
 /*
- * Projects
+ * Content
  */
 
-#projects {
+
+.content {
     max-width: 60em;
     margin: auto;
     padding: 2em;
 }
+
+/*
+ * Projects
+ */
 
 #projects hr {
     border: 1px solid #bdc3c7;
@@ -237,17 +240,6 @@ body {
 
 
 /*
- * Contact
- */
-
-#contact {
-    max-width: 60em;
-    margin: auto;
-    padding: 2em;
-}
-
-
-/*
  * General classes
  */
 
@@ -309,13 +301,6 @@ tr.empty {
 .icon {
     width: 1em;
     margin-right: 0.3em;
-}
-
-
-#welcome {
-    padding: 2em;
-    margin: 0 auto;
-    max-width: 60em;
 }
 
 .thin-header {
@@ -406,4 +391,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 #contact > *:nth-child(1) { animation: fadein 1.5s 0s both; }
 #contact > *:nth-child(2) { animation: fadein 1.5s 0.1s both; }
 #contact > *:nth-child(3) { animation: fadein 1.5s 0.2s both; }
+
+#source-code > *:nth-child(1) { animation: fadein 1.5s 0s both; }
+#source-code > *:nth-child(2) { animation: fadein 1.5s 0.1s both; }
+#source-code > *:nth-child(3) { animation: fadein 1.5s 0.2s both; }
 

@@ -52,7 +52,7 @@ fn access(
         current = &current[component];
     }
 
-    match dbg!(current) {
+    match current {
         Json::Null => (),
         Json::String(text) => out.write(text)?,
         Json::Number(number) => out.write(&number.to_string())?,

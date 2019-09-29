@@ -1,4 +1,43 @@
 ---
 template: index.hbs
 data: data.yml
+markdown:
+    matjakt: |
+        Search for the cheapest foodstuffs in stores all around Sweden. 
+
+        Compare millions of prices across 250+ stores to find the best deals
+        and save money. Prices are automatically fetched from some of the
+        largest food-retailers in Sweden (currently Ica and Hemköp).
+
+        Behind the scenes you will find all kinds of wonders:
+
+        - a fast search algorithm that corrects for spelling errors
+        - high performance asynchronous servers
+        - efficient image recognition algorithms
+        - and much more...
+
+    voxel-ray-tracer: |
+        Display ray traced voxel environments in real-time.
+
+        Complex voxel environments can be dynamically loaded onto a GPU and be
+        ray-traced in real-time thanks to an efficient Octree traversal
+        algorithm of my design.
+
+        There's currently support for voxels of different colors, camera
+        movement and shadows!
+
+    rust-postgres-query: |
+        Statically typed SQL queries with readable parameter names.  
+
+        An open source Rust library where the user defines named parameters
+        which are encoded into an SQL-query at compile-time.
+
+        You can print `fn main() { println!("Hello, world!") }`{.rust}.
+
+    kattis-client: |
+        A client for Kattis, the online competitive programming judge. 
+
+        This client can submit solutions, manage user code templates and
+        automatically tests the user's code against sample test cases found in
+        the problem statement.
 

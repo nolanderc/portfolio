@@ -1,6 +1,6 @@
 
 {{#*inline "project-link"}}
-    <a href="{{href}}" class="profile-link {{#if (eq href path)}}current{{/if}}">{{text}}</a>
+<a href="{{href}}{{target}}" class="profile-link {{#if (eq href path)}}current{{/if}}">{{text}}</a>
 {{/inline}}
 
 <div id="sidebar">
@@ -20,9 +20,9 @@
         </a>
 
         <div class="profile-links">
-            {{>project-link href="/" text="Home"}}
-            {{>project-link href="/projects/" text="Projects"}}
-            {{>project-link href="/contact/" text="Contact"}}
+            {{>project-link href="/" target="#welcome" text="Home"}}
+            {{>project-link href="/projects/" target="#projects" text="Projects"}}
+            {{>project-link href="/contact/" target="#contact" text="Contact"}}
         </div>
 
         <div id="profile-contact">

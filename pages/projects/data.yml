@@ -2,16 +2,7 @@
 projects:
 
     - title: Matjakt
-      description: 
-        - Search for the cheapest foodstuffs in stores all around Sweden. 
-        - Compare millions of prices across 250+ stores to find the best deals
-          and save money. Prices are automatically fetched from some of the
-          largest food-retailers in Sweden (currently Ica and Hemköp).
-        - "Behind the scenes you will find all kinds of wonders: <ul>
-           <li>a fast search algorithm that corrects for spelling errors</li>
-           <li>high performance asynchronous servers</li>
-           <li>efficient image recognition algorithms</li>
-           <li>and much more...</li></ul>"
+      description: markdown:matjakt
       image: gallery/matjakt.png
       links:
           website: https://matjakt.nolander.xyz
@@ -21,13 +12,7 @@ projects:
           - PostgreSQL
 
     - title: Real-Time Voxel Ray Tracing
-      description: 
-        - Display ray traced voxel environments in real-time.
-        - Complex voxel environments can be dynamically loaded onto a GPU and
-          be ray-traced in real-time thanks to an efficient Octree traversal
-          algorithm of my design.
-        - There's currently support for voxels of different
-          colors, camera movement and shadows!
+      description: markdown:voxel-ray-tracer
       image: 
           gallery/voxel-ray-trace.png
       links:
@@ -37,11 +22,19 @@ projects:
           - OpenCL
           - OpenGL
 
+    - title: Kattis Client
+      description: markdown:kattis-client
+      image:
+          gallery/kattis-client.png
+      links:
+          github: https://github.com/nolanderc/kattis-client
+      technologies:
+          - Rust
+          - Authentication
+          - CLI
+
     - title: rust-postgres-query
-      description: 
-        - Statically typed SQL queries with readable parameter names.  
-        - An open source Rust library where the user defines named parameters
-          which are encoded into an SQL-query at compile-time.
+      description: markdown:rust-postgres-query
       image:
           gallery/postgresql-query.png
       links:

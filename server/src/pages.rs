@@ -9,6 +9,8 @@ use std::collections::HashMap;
 use std::fs;
 use std::path::{Path, PathBuf};
 use std::sync::Arc;
+use std::process;
+use std::io::Write;
 
 pub fn config(_options: &Options, pages: SwapData<Pages>) -> impl FnOnce(&mut web::ServiceConfig) {
     move |config| {
@@ -33,6 +35,7 @@ fn display_page(page: Extension<Arc<Page>>, pages: SwapData<Pages>) -> Result<Ht
     let data = PageTemplate {
         data: page.data(),
         path: &page.breadcrumb.url(),
+        markdown: &page.index.markdown,
     };
 
     let rendered = templates.render(&page.template_name(), &data)?;
@@ -50,19 +53,41 @@ fn display_page(page: Extension<Arc<Page>>, pages: SwapData<Pages>) -> Result<Ht
 #[derive(Debug, Clone, Deserialize)]
 struct PageIndex {
     template: PathBuf,
-    data: Option<PathBuf>,
+    #[serde(default)]
+    data: PathOr<serde_yaml::Value>,
+    #[serde(default)]
+    markdown: HashMap<String, PathOr<String>>,
 }
 
-#[derive(Debug, Clone, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Deserialize)]
+#[serde(untagged)]
+enum InlinePathOr<T> {
+    Path(PathBuf),
+    Raw(T),
+}
+
+#[derive(Debug, Clone, PartialEq, Deserialize)]
+#[serde(untagged)]
+enum PathOr<T> {
+    Path(#[serde(deserialize_with = "relative_path")] PathBuf),
+    Raw(T),
+}
+
+#[derive(Debug, Clone)]
 struct PageIndexData {
     template: String,
     data: serde_yaml::Value,
+    markdown: HashMap<String, RenderedMarkdown>,
 }
+
+#[derive(Debug, Clone, Serialize)]
+struct RenderedMarkdown(String);
 
 #[derive(Debug, Serialize)]
 struct PageTemplate<'a> {
     data: &'a serde_yaml::Value,
     path: &'a str,
+    markdown: &'a HashMap<String, RenderedMarkdown>,
 }
 
 #[derive(Debug, Clone)]
@@ -80,6 +105,29 @@ pub struct Pages {
 
 #[derive(Debug, Clone)]
 struct Breadcrumb(Vec<String>);
+
+fn relative_path<'de, D>(de: D) -> Result<PathBuf, D::Error>
+where
+    D: Deserializer<'de>,
+{
+    let path = PathBuf::deserialize(de)?;
+
+    if path.to_string_lossy().contains('\n') {
+        Err(serde::de::Error::custom(err!(
+            "path may not contain a new-line character"
+        )))
+    } else if !path.is_relative() {
+        Err(serde::de::Error::custom(err!("path must be relative")))
+    } else {
+        Ok(path)
+    }
+}
+
+impl<T: Default> Default for PathOr<T> {
+    fn default() -> Self {
+        PathOr::Raw(T::default())
+    }
+}
 
 impl Pages {
     pub fn walk_dir(mut templates: Templates, dir: &Path) -> Result<Pages> {
@@ -102,7 +150,7 @@ impl Pages {
             let index = fs::File::open(index_path)?;
             let index: PageIndex = serde_yaml::from_reader(index)?;
 
-            let index_data = PageIndexData::load(&path, &index)?;
+            let index_data = PageIndexData::compile(&path, &index)?;
 
             let page = Page {
                 root: path,
@@ -153,18 +201,54 @@ impl Pages {
 }
 
 impl PageIndexData {
-    pub fn load(root: &Path, index: &PageIndex) -> Result<PageIndexData> {
+    pub fn compile(root: &Path, index: &PageIndex) -> Result<PageIndexData> {
         let template = fs::read_to_string(root.join(&index.template))?;
-        let data = if let Some(path) = &index.data {
-            let file = fs::File::open(root.join(path))?;
-            serde_yaml::from_reader(file)?
-        } else {
-            serde_yaml::Value::Null
+
+        let data = match &index.data {
+            PathOr::Path(path) => {
+                let file = fs::File::open(root.join(path))?;
+                serde_yaml::from_reader(file)?
+            }
+            PathOr::Raw(value) => value.clone(),
         };
 
-        let index_data = PageIndexData { template, data };
+        let mut markdown = HashMap::new();
+        for (name, resource) in index.markdown.iter() {
+            let text = match resource {
+                PathOr::Path(path) => fs::read_to_string(root.join(path))?,
+                PathOr::Raw(text) => text.clone(),
+            };
+
+            let rendered = Self::render_markdown(&text)?;
+            markdown.insert(name.to_owned(), rendered);
+        }
+
+        let index_data = PageIndexData { template, data, markdown };
 
         Ok(index_data)
+    }
+
+    fn render_markdown(text: &str) -> Result<RenderedMarkdown> {
+        let mut child = process::Command::new("sh")
+            .arg("-c")
+            .arg("pandoc --from=markdown --to=html")
+            .stdin(process::Stdio::piped())
+            .stderr(process::Stdio::piped())
+            .stdout(process::Stdio::piped())
+            .spawn()?;
+
+        let stdin = child.stdin.as_mut().ok_or_else(|| err!("Failed to capture stdin"))?;
+        stdin.write_all(text.as_bytes())?;
+
+        let output = child.wait_with_output()?;
+
+        if !output.status.success() {
+            let output = String::from_utf8(output.stderr)?;
+            Err(err!("failed to render markdown: {}", output))
+        } else {
+            let output = String::from_utf8(output.stdout)?;
+            Ok(RenderedMarkdown(output))
+        }
     }
 }
 
@@ -192,5 +276,61 @@ impl Breadcrumb {
         }
 
         url
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn deserialize_page_index() {
+        let yaml = r#"---
+template: index.hbs
+data: data.yml
+markdown:
+    path: abc.md
+    literal: |
+        ---
+        # Hello
+        This is a paragraph
+        "#;
+
+        let index: PageIndex = serde_yaml::from_str(yaml).unwrap();
+
+        assert_eq!(index.template, PathBuf::from("index.hbs"));
+        assert_eq!(index.data, PathOr::Path("data.yml".into()));
+
+        let mut markdown = HashMap::new();
+        markdown.insert("path".to_owned(), PathOr::Path("abc.md".into()));
+
+        let literal = "---\n# Hello\nThis is a paragraph\n";
+        markdown.insert("literal".to_owned(), PathOr::Raw(literal.to_owned()));
+
+        assert_eq!(index.markdown, markdown);
+    }
+
+    #[test]
+    fn deserialize_page_index_inline_data() {
+        let yaml = r#"---
+template: index.hbs
+data: 
+    foo: 13
+    bar:
+        - Jake
+        - Michael
+        "#;
+
+        let index: PageIndex = serde_yaml::from_str(yaml).unwrap();
+
+        let data = serde_yaml::from_str(r#"---
+foo: 13
+bar:
+    - Jake
+    - Michael
+        "#).unwrap();
+
+        assert_eq!(index.template, PathBuf::from("index.hbs"));
+        assert_eq!(index.data, PathOr::Raw(data));
     }
 }

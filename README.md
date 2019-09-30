@@ -2,7 +2,7 @@
 # Christofer Nolander's Portfolio
 
 This is the repository containing the source code for the server and website
-powering my [portfolio](nolander.me). 
+powering my [portfolio](https://www.nolander.me). 
 
 
 ## Design

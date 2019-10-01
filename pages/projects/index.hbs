@@ -42,9 +42,15 @@
                         <img src="{{image}}" style="float:left" />
                     </div>
                 {{/if}}
+                {{#if youtube}}
+                    <div class="project-image">
+                        <iframe src="{{youtube}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                {{/if}}
             </div>
         {{/each}}
     </div>
+
 {{/inline}}
 
 {{>base}}

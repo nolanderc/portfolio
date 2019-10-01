@@ -41,3 +41,8 @@ markdown:
         automatically tests the user's code against sample test cases found in
         the problem statement.
 
+    n--: |
+        A clone of the game with a similar name: N++.
+
+        This was my final project for the programming course in High School.
+

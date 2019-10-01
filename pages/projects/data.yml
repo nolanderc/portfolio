@@ -33,6 +33,15 @@ projects:
           - Authentication
           - CLI
 
+    - title: N--
+      description: markdown:n--
+      youtube: https://www.youtube.com/embed/KxaSVUY-s0s
+      links:
+          github: https://github.com/nolanderc/school-n-
+      technologies:
+          - C++
+          - WinAPI
+
     - title: rust-postgres-query
       description: markdown:rust-postgres-query
       image:

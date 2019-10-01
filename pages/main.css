@@ -177,7 +177,7 @@ body {
     width: 100%;
 }
 
-.project-image img {
+.project-image > * {
     border-radius: 5px;
     box-shadow: 0 0 10px #aaa;
     max-width: 100%;
@@ -208,7 +208,7 @@ body {
     .project:nth-child(odd) > *:nth-child(1) {
         order: 1;
     }
-    .project-image img {
+    .project-image > * {
         position: relative;
         top: 50%;
         transform: translate(-50%, -50%);

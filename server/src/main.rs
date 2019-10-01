@@ -13,11 +13,11 @@ use actix_web::{web, App, HttpRequest, HttpServer};
 use arc_swap::ArcSwap;
 use notify::{raw_watcher, RecursiveMode, Watcher};
 use std::path::Path;
+use std::process;
 use std::sync::{mpsc, Arc};
 use std::thread;
 use std::time::Duration;
 use structopt::StructOpt;
-use std::process;
 
 pub type SwapData<T> = web::Data<ArcSwap<T>>;
 
@@ -31,7 +31,7 @@ fn main() {
         Err(e) => {
             log::error!("Fatal: {}", e);
             process::exit(1);
-        } ,
+        }
         Ok(()) => (),
     }
 }
@@ -85,9 +85,12 @@ fn watch_directories(
         let _watcher = watcher;
 
         while let Ok(_) = events.recv() {
-            while events.try_recv().is_ok() {
-                thread::sleep(delay);
-            }
+            log::info!("file changes detected");
+
+            thread::sleep(delay);
+
+            // ignore events that occured during the delay
+            while events.try_recv().is_ok() {}
 
             if !f() {
                 break;

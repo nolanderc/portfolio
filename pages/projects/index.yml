@@ -32,8 +32,6 @@ markdown:
         An open source Rust library where the user defines named parameters
         which are encoded into an SQL-query at compile-time.
 
-        You can print `fn main() { println!("Hello, world!") }`{.rust}.
-
     kattis-client: |
         A client for Kattis, the online competitive programming judge. 
 
@@ -45,4 +43,5 @@ markdown:
         A clone of the game with a similar name: N++.
 
         This was my final project for the programming course in High School.
+        It features a level editor, a particle system and a simple physics engine.
 

@@ -49,7 +49,7 @@ markdown:
         A WebAssembly (WASM) interpreter.
         
         It closely follows the official WebAssembly 1.0 specification. Although
-        complete conformance has not been verified it functions as intended.
+        complete conformance has not been verified, it functions as intended.
         
         Being an interpreter, performance will never reach what is possible by
         running code natively. Without any sort of JIT optimizations this

@@ -13,11 +13,11 @@ pub struct Options {
     pub port: u16,
 
     /// Path to the directory containing all pages.
-    #[structopt(short = "d", long = "pages", default_value = "pages")]
+    #[structopt(short = "d", long = "pages")]
     pub pages_directory: PathBuf,
 
     /// Path to the directory containing all templates.
-    #[structopt(short = "t", long = "templates", default_value = "templates")]
+    #[structopt(short = "t", long = "templates")]
     pub templates_directory: PathBuf,
 
     /// Upgade pages on any changes to the 'pages' and 'templates' directories.

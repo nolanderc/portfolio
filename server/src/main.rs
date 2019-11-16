@@ -50,15 +50,20 @@ fn start_server(options: &'static Options) -> Result<()> {
     }
 
     let app = move || {
+        let files = Files::new("/", &options.pages_directory)
+            .index_file("")
+            .redirect_to_slash_directory();
+
         App::new()
             .register_data(pages.clone())
             .configure(pages::config(options, pages.clone()))
-            .service(Files::new("/", &options.pages_directory))
+            .service(files)
             .default_service(web::route().to(not_found))
     };
 
     let server = HttpServer::new(app).bind((options.address, options.port))?;
 
+    println!("Running server on {}:{}", options.address, options.port);
     server.run()?;
 
     Ok(())

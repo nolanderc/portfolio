@@ -29,8 +29,8 @@ markdown:
     rust-postgres-query: |
         Statically typed SQL queries with readable parameter names.  
 
-        An open source Rust library where the user defines named parameters
-        which are encoded into an SQL-query at compile-time.
+        An open source Rust library which enable the declaration of
+        type-checked SQL queries with named parameters.
 
     kattis-client: |
         A client for Kattis, the online competitive programming judge. 
@@ -44,4 +44,16 @@ markdown:
 
         This was my final project for the programming course in High School.
         It features a level editor, a particle system and a simple physics engine.
+
+    washem: |
+        A WebAssembly (WASM) interpreter.
+        
+        It closely follows the official WebAssembly 1.0 specification. Although
+        complete conformance has not been verified it functions as intended.
+        
+        Being an interpreter, performance will never reach what is possible by
+        running code natively. Without any sort of JIT optimizations this
+        interpreter runs roughly 80 times slower than native code, which is
+        respectable considering the low level nature of WebAssembly combined
+        with its security guarantees.
 

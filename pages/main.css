@@ -179,7 +179,7 @@ body {
 
 .project-image > * {
     border-radius: 5px;
-    box-shadow: 0 0 10px #aaa;
+    /* box-shadow: 0 0 10px #aaa; */
     max-width: 100%;
     max-height: 20em;
     margin-left: auto;

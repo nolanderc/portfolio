@@ -22,7 +22,7 @@ projects:
           - OpenCL
           - OpenGL
 
-    - title: WebAssembly Interpreter
+    - title: Washem
       description: markdown:washem
       image:
           gallery/web-assembly.png
@@ -38,6 +38,7 @@ projects:
           gallery/kattis-client.png
       links:
           github: https://github.com/nolanderc/kattis-client
+          crates: https://crates.io/crates/kattis
       technologies:
           - Rust
           - Authentication
@@ -58,6 +59,7 @@ projects:
           gallery/postgresql-query.png
       links:
           github: https://github.com/nolanderc/rust-postgres-query
+          crates: https://crates.io/crates/postgres-query
       technologies:
           - Rust
           - PostgreSQL

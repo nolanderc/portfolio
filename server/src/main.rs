@@ -9,7 +9,7 @@ use crate::options::Options;
 use crate::pages::Pages;
 use crate::templates::Templates;
 use actix_files::Files;
-use actix_web::{web, App, HttpRequest, HttpServer};
+use actix_web::{web, App, HttpRequest, HttpResponse, HttpServer};
 use arc_swap::ArcSwap;
 use notify::{raw_watcher, RecursiveMode, Watcher};
 use std::path::Path;
@@ -69,8 +69,9 @@ fn start_server(options: &'static Options) -> Result<()> {
     Ok(())
 }
 
-fn not_found(req: HttpRequest) -> String {
-    format!("404 Not Found: '{}'", req.path())
+fn not_found(req: HttpRequest) -> HttpResponse {
+    HttpResponse::NotFound()
+        .body(format!("404 Not Found: '{}'", req.path()))
 }
 
 fn watch_directories(

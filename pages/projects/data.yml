@@ -22,6 +22,16 @@ projects:
           - OpenCL
           - OpenGL
 
+    - title: WebAssembly Interpreter
+      description: markdown:washem
+      image:
+          gallery/web-assembly.png
+      links:
+          github: https://github.com/nolanderc/washem
+      technologies:
+          - Rust
+          - WebAssembly
+
     - title: Kattis Client
       description: markdown:kattis-client
       image:

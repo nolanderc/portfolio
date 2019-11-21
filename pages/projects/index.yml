@@ -36,7 +36,7 @@ markdown:
         A client for Kattis, the online competitive programming judge. 
 
         This client can submit solutions, manage user code templates and
-        automatically tests the user's code against sample test cases found in
+        automatically test the user's code against sample test cases found in
         the problem statement.
 
     n--: |

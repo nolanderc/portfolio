@@ -67,3 +67,14 @@ markdown:
         respectable considering the low level nature of WebAssembly combined
         with its security guarantees.
 
+
+    snow-fight: |
+        An online multiplayer game where the snowmen throw you!
+
+        A learning project where I implemented a low-latency network protocol
+        from scratch and played around with some experimental libraries:
+
+        - Built on top of UDP.
+        - Implements a stripped down version of TCP, but with some extra bells and whistles.
+        - Built custom bit-packing serialization format.
+        - 3D graphics built on top of the experimental WebGPU standard.

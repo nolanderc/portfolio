@@ -1,6 +1,17 @@
 ---
 projects:
 
+    - title: Snow Fight
+      description: markdown:snow-fight
+      image:
+          gallery/snow-fight.png
+      links:
+          github: https://github.com/nolanderc/snow-fight
+      technologies:
+          - Rust
+          - Networking
+          - WebGPU
+
     - title: rust-postgres-query
       description: markdown:rust-postgres-query
       image:

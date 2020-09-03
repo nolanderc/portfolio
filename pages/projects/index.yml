@@ -2,20 +2,6 @@
 template: index.hbs
 data: data.yml
 markdown:
-    matjakt: |
-        Search for the cheapest foodstuffs in stores all around Sweden. 
-
-        Compare millions of prices across 250+ stores to find the best deals
-        and save money. Prices are automatically fetched from some of the
-        largest food-retailers in Sweden (currently Ica and Hemköp).
-
-        Behind the scenes you will find all kinds of wonders:
-
-        - a fast search algorithm that corrects for spelling errors
-        - high performance asynchronous servers
-        - efficient image recognition algorithms
-        - and much more...
-
     voxel-ray-tracer: |
         Display ray traced voxel environments in real-time.
 
@@ -32,6 +18,16 @@ markdown:
         An open source Rust library which enable the declaration of
         type-checked SQL queries with named parameters.
 
+    software-renderer: |
+        A triangle renderer running on the CPU, instead of the GPU. Written in
+        a weekend.
+        
+        It shares some similarities with conventional graphics APIs:
+
+        - A programmable shader pipeline (vertex and fragment shaders).
+        - Indexed vertex arrays.
+        - Texturing support.
+
     kattis-client: |
         A client for Kattis, the online competitive programming judge. 
 
@@ -44,6 +40,20 @@ markdown:
 
         This was my final project for the programming course in High School.
         It features a level editor, a particle system and a simple physics engine.
+
+    matjakt: |
+        Search for the cheapest foodstuffs in stores all around Sweden. 
+
+        Compare millions of prices across 250+ stores to find the best deals
+        and save money. Prices are automatically fetched from some of the
+        largest food-retailers in Sweden (currently Ica and Hemköp).
+
+        Behind the scenes you will find all kinds of wonders:
+
+        - a fast search algorithm that corrects for spelling errors
+        - high performance asynchronous servers
+        - efficient image recognition algorithms
+        - and much more...
 
     washem: |
         A WebAssembly (WASM) interpreter.

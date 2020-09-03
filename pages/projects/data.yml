@@ -1,14 +1,15 @@
 ---
 projects:
 
-    - title: Matjakt
-      description: markdown:matjakt
-      image: gallery/matjakt.png
+    - title: rust-postgres-query
+      description: markdown:rust-postgres-query
+      image:
+          gallery/postgresql-query.png
       links:
-          website: https://matjakt.nolander.xyz
+          github: https://github.com/nolanderc/rust-postgres-query
+          crates: https://crates.io/crates/postgres-query
       technologies:
           - Rust
-          - Web
           - PostgreSQL
 
     - title: Real-Time Voxel Ray Tracing
@@ -32,6 +33,15 @@ projects:
           - Rust
           - WebAssembly
 
+    - title: Soft
+      description: markdown:software-renderer
+      image: 
+          gallery/soft_renderer.png
+      links:
+          github: https://github.com/nolanderc/soft
+      technologies:
+          - Rust
+
     - title: Kattis Client
       description: markdown:kattis-client
       image:
@@ -53,14 +63,13 @@ projects:
           - C++
           - WinAPI
 
-    - title: rust-postgres-query
-      description: markdown:rust-postgres-query
-      image:
-          gallery/postgresql-query.png
+    - title: Matjakt
+      description: markdown:matjakt
+      image: gallery/matjakt.png
       links:
-          github: https://github.com/nolanderc/rust-postgres-query
-          crates: https://crates.io/crates/postgres-query
+          website: https://matjakt.nolander.xyz
       technologies:
           - Rust
+          - Web
           - PostgreSQL
 

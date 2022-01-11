@@ -1,7 +1,110 @@
+<!DOCTYPE html>
 <html>
-    <head></head>
+    <head>
+        <title>Christofer Nolander - Portfolio</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="main.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/61eea45cd0.js" crossorigin="anonymous"></script>
+    </head>
     <body>
-        <h1>Christofer Nolander</h1>
+        <div id="header-section" class="section">
+            <div class="content header">
+                <img src="static/portrait.jpg" id="portrait"/>
+                <div class="personal">
+                    <h1>Christofer Nolander</h1>
+                    <ul class="social">
+                        <li><a href="https://github.com/nolanderc">
+                            <span class="fa-github" /> nolanderc
+                        </a></li>
+                        <li><a href="https://www.linkedin.com/in/nolander/">
+                            <span class="fa-linkedin" /> nolander
+                        </a></li>
+                        <li><a href="mailto:christofer@nolander.me">
+                            <span class="fa-envelope" /> christofer@nolander.me
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="about-section" class="section">
+            <div class="content about">
+                <div class="description">
+                    <i style="text-align: left">
+                        Hello, I'm a programming enthusiast currently studying
+                        Software Engineering in Stockholm, Sweden. Below you
+                        will find some of the things I have been working on.
+                    </i>
+                </div>
+            </div>
+        </div>
+        <div id="voxel-section" class="section">
+            <div class="content projects">
+                <img src="static/menger.jpg">
+                <div class="description">
+                    <h1>Voxel Raytracer</h1>
+                    <p>
+                        This application realistically simulates how light
+                        interacts with an environment made up of only cubes.
+                        The programs utilizes GPU acceleration and a denoising
+                        algorithm in order to produce quality images in
+                        real-time, even on low-end hardware.
+                    </p>
+                    <a href="https://github.com/nolanderc/gpu-voxel-raytracer" class="fa-github"> GitHub</a>
+                </div>
+            </div>
+        </div>
+        <div id="aoc-section" class="section">
+            <div class="content projects">
+                <img src="static/advent-code.png">
+                <div class="description">
+                    <h1>Advent of Code</h1>
+                    <p>
+                        Advent of Code is an event held in December every year.
+                        It features programming puzzles ranging from trivial to
+                        extremely difficult. I first participated in 2019 and
+                        have solved every puzzle since.
+                    </p>
+                    <a href="https://github.com/nolanderc/advent-of-code" class="fa-github"> GitHub</a>
+                </div>
+            </div>
+        </div>
+        <div id="postgres-query-section" class="section">
+            <div class="content projects">
+                <img src="static/postgresql-query.png">
+                <div class="description">
+                    <h1>Postgres Query Library</h1>
+                    <p>
+                        This is a library I wrote to extract data from SQL
+                        queries run against a postgres database. The library
+                        focuses on providing an easy-to-use interface that
+                        allows developers to quickly iterate on their code. It
+                        has gained some decent popularity within the Rust
+                        community.
+                    </p>
+                    <a href="https://github.com/nolanderc/rust-postgres-query" class="fa-github"> GitHub</a>
+                </div>
+            </div>
+        </div>
+        <div id="snow-fight-section" class="section">
+            <div class="content projects">
+                <img src="static/snow-fight.png">
+                <div class="description">
+                    <h1>Snow Fight</h1>
+                    <p>
+                    A silly multiplayer game where two snowmen have a fight.
+                    But instead of throwing snowballs, they throw regular
+                    objects such as trees and mushrooms! The challenge here was
+                    the creation of a custom network protocol that could handle
+                    packet-loss, spikes in latency, consistency between clients
+                    and more.
+                    </p>
+                    <a href="https://github.com/nolanderc/snow-fight" class="fa-github"> GitHub</a>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
 

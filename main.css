@@ -1,0 +1,122 @@
+
+* {
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    color: #FCD0A1;
+    margin: 0;
+    padding: 0;
+    font-size: 12pt;
+}
+
+a {
+    text-decoration: none;
+    color: #DB2B39;
+}
+
+.section {
+    background-color: magenta;
+    padding: 1em;
+}
+
+.content {
+    max-width: 70em;
+    display: flex;
+    flex: content;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.section:nth-child(even) .content {
+    flex-direction: row-reverse;
+}
+
+.content img {
+    max-width: 20em;
+    max-height: 20em;
+    object-fit: contain;
+    margin: 1em;
+    border-radius: 5pt;
+    box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+.description {
+    max-width: 20em;
+    display: flex;
+    flex: content;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    flex-wrap: wrap;
+}
+
+.description h1 {
+    text-align: center;
+    font-size: 20pt;
+    margin-bottom: 0;
+}
+
+.description p {
+    text-align: left;
+}
+
+.about .description {
+    max-width: 30em;
+}
+
+
+#header-section { background-color: #16324F; }
+#about-section { background-color: #13293D; }
+#voxel-section { background-color: #373737; }
+#aoc-section { background-color: #100F23; }
+#postgres-query-section { background-color: #373737; }
+#snow-fight-section { background-color: #2F4A38; }
+
+#aoc-section img {
+    box-shadow: 0 0 10px 5px rgba(200, 200, 100, 0.4);
+}
+
+.header img {
+    margin-bottom: 0;
+}
+
+#portrait {
+    height: 100pt;
+    border-radius: 100%;
+}
+
+.personal {
+    padding: 1em;
+    padding-bottom: 0;
+}
+
+.personal h1 {
+    font-size: 40pt;
+    margin-top: 0;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.social {
+    width: fit-content;
+    display: flex;
+    margin: 0;
+    padding: 0;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.social li {
+    list-style: none;
+    margin: 0.5em;
+}
+

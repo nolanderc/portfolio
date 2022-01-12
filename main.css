@@ -35,9 +35,8 @@ a {
     flex-direction: row-reverse;
 }
 
-.content img {
-    max-width: 20em;
-    max-height: 20em;
+.content img,.content iframe {
+    max-width: min(20em, 90vw);
     object-fit: contain;
     margin: 1em;
     border-radius: 5pt;
@@ -75,10 +74,16 @@ a {
 #aoc-section { background-color: #100F23; }
 #postgres-query-section { background-color: #373737; }
 #snow-fight-section { background-color: #2F4A38; }
+#npp-section { background-color: #373737; }
 
 #aoc-section img {
-    box-shadow: 0 0 10px 5px rgba(200, 200, 100, 0.4);
+    box-shadow: 0 0 10pt 5pt rgba(200, 200, 100, 0.4);
 }
+
+#postgres-query-section img {
+    box-shadow: 0 0 5pt 2pt rgba(0, 0, 0, 0.5);
+}
+
 
 .header img {
     margin-bottom: 0;
@@ -92,6 +97,9 @@ a {
 .personal {
     padding: 1em;
     padding-bottom: 0;
+    height: fit-content;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 .personal h1 {
